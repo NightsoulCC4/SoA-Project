@@ -95,6 +95,17 @@ const getLatLong = async () => {
     }
 }
 
+const getLatLongCon = async () => {
+    const sql = `select "Province/State" as State , "Country/Region" as Country, lat , long , "3/23/20" as value from covid19_confirmed_csv`
+    try {
+        const data = await pool.query(sql);
+        return data;
+    } catch (err) {
+        console.log(err);
+        return null;
+    }
+}
+
 module.exports = {
     getAllCountry, 
     getAllConfirmed, 
@@ -104,4 +115,5 @@ module.exports = {
     getTotalRecovered,
     getTotalDeath,
     getLatLong,
+    getLatLongCon
 }

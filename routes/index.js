@@ -25,15 +25,18 @@ router.get('/map', async function(req, res, next) {
   const totalConfirmed = await db.getTotalConfirm();
   const totalRecovered = await db.getTotalRecovered();
   const totalDeath = await db.getTotalDeath();
-  const getLatLong = await db.getLatLong();
+  const getLatLongCon = await db.getLatLongCon();
 
   const objectTotal = {
     totalConfirmed: totalConfirmed.rows[0].confirmed,
     totalRecovered: totalRecovered.rows[0].recovered,
     totalDeath: totalDeath.rows[0].death
   }
-  console.log(objectTotal);
-  res.render('map', { totalObject: objectTotal ,  Maps: getLatLong.rows});
+  /* แสดงค่ารวมแบบต่างๆ */
+  // console.log(objectTotal);
+  /* แสดงค่าการยืนยันการติดเชื้อรายคนของแต่ละประเทศ */
+  // console.log(objectConfirm);
+  res.render('map', { totalObject: objectTotal ,  Maps: getLatLongCon.rows});
 });
 
 module.exports = router;

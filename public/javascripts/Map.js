@@ -1,10 +1,6 @@
-const getMap = (data, confirms) => {
+const getMap = (data) => {
 
     const parseData = JSON.parse(data)
-
-    for (const key in parseData) {
-        console.log(parseData[key].lat);
-    }
 
     var map = L.map('map').setView([15, 101], 1);
 
